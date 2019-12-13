@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29609.76
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpperBoundLimitedCollections", "UpperBoundLimitedCollections\UpperBoundLimitedCollections.csproj", "{C7597A1C-FE04-4640-9243-12AD8904D8CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpperBoundLimitedCollections.Tests", "UpperBoundLimitedCollections.Tests\UpperBoundLimitedCollections.Tests.csproj", "{A60F5137-254C-4B5B-88FC-7E5EE143CD5C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C7597A1C-FE04-4640-9243-12AD8904D8CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7597A1C-FE04-4640-9243-12AD8904D8CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7597A1C-FE04-4640-9243-12AD8904D8CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7597A1C-FE04-4640-9243-12AD8904D8CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A60F5137-254C-4B5B-88FC-7E5EE143CD5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A60F5137-254C-4B5B-88FC-7E5EE143CD5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A60F5137-254C-4B5B-88FC-7E5EE143CD5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A60F5137-254C-4B5B-88FC-7E5EE143CD5C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BA1459A2-5542-4B8E-841D-1F55468583AA}
+	EndGlobalSection
+EndGlobal
