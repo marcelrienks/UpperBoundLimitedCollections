@@ -1,6 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using UpperBoundLimitedCollections.Tests.Factory;
+using UpperBoundLimitedCollections.Tests.Factories;
 
 namespace UpperBoundLimitedCollections.Tests
 {
@@ -19,7 +19,7 @@ namespace UpperBoundLimitedCollections.Tests
         [TestMethod]
         public void Count()
         {
-            var list = UpperBoundLimitedListFactory.GenerateStandardUpperBoundLimitedList();
+            var list = DataFactory.GenerateStandardUpperBoundLimitedList();
 
             Assert.AreEqual(3, list.Count);
         }
@@ -35,7 +35,7 @@ namespace UpperBoundLimitedCollections.Tests
         [TestMethod]
         public void Read()
         {
-            var list = UpperBoundLimitedListFactory.GenerateStandardUpperBoundLimitedList();
+            var list = DataFactory.GenerateStandardUpperBoundLimitedList();
 
             Assert.AreEqual("2", list[1]);
         }
@@ -43,7 +43,7 @@ namespace UpperBoundLimitedCollections.Tests
         [TestMethod]
         public void IndexOf()
         {
-            var list = UpperBoundLimitedListFactory.GenerateStandardUpperBoundLimitedList();
+            var list = DataFactory.GenerateStandardUpperBoundLimitedList();
 
             Assert.AreEqual(1, list.IndexOf("2"));
         }
@@ -51,7 +51,7 @@ namespace UpperBoundLimitedCollections.Tests
         [TestMethod]
         public void InsertAtUpperBoundLimit()
         {
-            var list = UpperBoundLimitedListFactory.GenerateStandardUpperBoundLimitedList();
+            var list = DataFactory.GenerateStandardUpperBoundLimitedList();
 
             list.Insert(1, "4");
             Assert.AreEqual(3, list.Count);
@@ -63,7 +63,7 @@ namespace UpperBoundLimitedCollections.Tests
         [TestMethod]
         public void InsertAtUpperBoundLimit0Index()
         {
-            var list = UpperBoundLimitedListFactory.GenerateStandardUpperBoundLimitedList();
+            var list = DataFactory.GenerateStandardUpperBoundLimitedList();
 
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => list.Insert(0, "4"), "Specified argument was out of the range of valid values. (Parameter 'index cannot be 0, UpperBoundLimit of 3 will ensure that item will be removed after being added.')");
         }
@@ -71,7 +71,7 @@ namespace UpperBoundLimitedCollections.Tests
         [TestMethod]
         public void RemoveAt()
         {
-            var list = UpperBoundLimitedListFactory.GenerateStandardUpperBoundLimitedList();
+            var list = DataFactory.GenerateStandardUpperBoundLimitedList();
 
             list.RemoveAt(1);
             Assert.AreEqual(2, list.Count);
@@ -91,7 +91,7 @@ namespace UpperBoundLimitedCollections.Tests
         [TestMethod]
         public void AddAtUpperBoundLimit()
         {
-            var list = UpperBoundLimitedListFactory.GenerateStandardUpperBoundLimitedList();
+            var list = DataFactory.GenerateStandardUpperBoundLimitedList();
             list.Add("4");
 
             Assert.AreEqual(3, list.Count);
@@ -103,7 +103,7 @@ namespace UpperBoundLimitedCollections.Tests
         [TestMethod]
         public void Clear()
         {
-            var list = UpperBoundLimitedListFactory.GenerateStandardUpperBoundLimitedList();
+            var list = DataFactory.GenerateStandardUpperBoundLimitedList();
 
             Assert.AreEqual(3, list.Count);
 
@@ -114,7 +114,7 @@ namespace UpperBoundLimitedCollections.Tests
         [TestMethod]
         public void Contains()
         {
-            var list = UpperBoundLimitedListFactory.GenerateStandardUpperBoundLimitedList();
+            var list = DataFactory.GenerateStandardUpperBoundLimitedList();
 
             Assert.IsTrue(list.Contains("2"));
         }
@@ -122,7 +122,7 @@ namespace UpperBoundLimitedCollections.Tests
         [TestMethod]
         public void CopyTo()
         {
-            var list = UpperBoundLimitedListFactory.GenerateStandardUpperBoundLimitedList();
+            var list = DataFactory.GenerateStandardUpperBoundLimitedList();
 
             var copiedList = new string[list.Count];
             list.CopyTo(copiedList, 0);
@@ -136,7 +136,7 @@ namespace UpperBoundLimitedCollections.Tests
         [TestMethod]
         public void Remove()
         {
-            var list = UpperBoundLimitedListFactory.GenerateStandardUpperBoundLimitedList();
+            var list = DataFactory.GenerateStandardUpperBoundLimitedList();
 
             Assert.IsTrue(list.Remove("2"));
             Assert.AreEqual(2, list.Count);
@@ -145,7 +145,7 @@ namespace UpperBoundLimitedCollections.Tests
         [TestMethod]
         public void GetEnumerator()
         {
-            var list = UpperBoundLimitedListFactory.GenerateStandardUpperBoundLimitedList();
+            var list = DataFactory.GenerateStandardUpperBoundLimitedList();
 
             var enumerator = list.GetEnumerator();
             Assert.IsNotNull(enumerator);
