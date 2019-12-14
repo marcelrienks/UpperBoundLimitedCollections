@@ -18,7 +18,7 @@ namespace UpperBoundLimitedCollections
 
         /// <summary>
         /// Appends an item to the end of the  <c>System.Collections.Generic.ICollection</c>,
-        /// removing a range from the beginning of the list if count is already larger or equal to 'upperBoundlimit', in order to maintain the maximum upper bound limit.
+        /// removing a range of items from the beginning of the list if count is already larger or equal to 'upperBoundlimit', in order to maintain the maximum upper bound limit.
         /// </summary>
         /// <param name="item">The object to add to the <c>System.Collections.Generic.ICollection</c>.</param>
         /// <param name="upperBoundLimit">The maximum upper bound limit that the list should maintain. This value must be greater than 0.</param>
@@ -26,7 +26,7 @@ namespace UpperBoundLimitedCollections
         public void Add(T item, int upperBoundLimit)
         {
             // Handles the upper boud limit. If this.Count is larger than 'upperBoundlimit',
-            // a range from the beginning of the list will be removed in order to maintain the maximum upper bound limit
+            // a range of items from the beginning of the list will be removed in order to maintain the maximum upper bound limit
             HandleUpperBoundLimit(upperBoundLimit);
 
             Add(item);
@@ -39,7 +39,7 @@ namespace UpperBoundLimitedCollections
 
         /// <summary>
         /// Inserts an item into the <c>System.Collections.Generic.IList</c> at the specified index,
-        /// removing a range from the beginning of the list if count is already larger or equal to 'upperBoundlimit', in order to maintain the maximum upper bound limit.
+        /// removing a range of items from the beginning of the list if count is already larger or equal to 'upperBoundlimit', in order to maintain the maximum upper bound limit.
         /// </summary>
         /// <param name="index">The zero-based index at which item should be inserted.</param>
         /// <param name="item">The object to add to the <c>System.Collections.Generic.ICollection</c>.</param>
@@ -48,7 +48,7 @@ namespace UpperBoundLimitedCollections
         public void Insert(int index, T item, int upperBoundLimit)
         {
             // Handles the upper boud limit. If this.Count is larger than 'upperBoundlimit',
-            // a range from the beginning of the list will be removed in order to maintain the maximum upper bound limit
+            // a range of items from the beginning of the list will be removed in order to maintain the maximum upper bound limit
             HandleUpperBoundLimit(upperBoundLimit);
 
             Insert(index, item);
@@ -60,7 +60,7 @@ namespace UpperBoundLimitedCollections
         }
 
         /// <summary>
-        /// Handles the upper boud limit. If this.Count is larger than 'upperBoundlimit',
+        /// Handles the upper bound limit. If this.Count is greater than 'upperBoundlimit',
         /// a range from the beginning of the list will be removed in order to maintain the maximum upper bound limit.
         /// </summary>
         /// <param name="upperBoundLimit">The maximum upper bound limit that the list should maintain. This value must be greater than 0.</param>
