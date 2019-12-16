@@ -1,4 +1,4 @@
-﻿namespace Helpers.UpperBoundLimitedCollections
+﻿namespace UpperBoundLimitedCollections.Helpers
 {
     public static class RangeCalculator
     {
