@@ -1,4 +1,5 @@
-﻿using System;
+﻿using UpperBoundLimitedCollections.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -37,8 +38,9 @@ namespace UpperBoundLimitedCollections
         {
             // Handles the upper boud limit. If this.Count is equal to 'upperBoundlimit',
             // the first element in the list is removed in order to maintain the maximum upper bound limit.
-            HandleUpperBoundLimitForAdd();
+            UpperBoundLimitHandler.CheckAndRemoveRange(this, item.Yield(), UpperBoundLimit);
 
+            // Add the item to 'this'
             Add(item);
         }
 
@@ -53,8 +55,9 @@ namespace UpperBoundLimitedCollections
         {
             // Handles the upper boud limit. If this.Count combined with collection size is equal to or greater than 'upperBoundlimit',
             // a range of items from the beginning of the list is removed in order to maintain the maximum upper bound limit.
-            HandleUpperBountLimitForAddRange(collection.Count());
+            UpperBoundLimitHandler.CheckAndRemoveRange(this, collection, UpperBoundLimit);
 
+            // Add range to 'this'
             AddRange(collection);
         }
 
@@ -69,8 +72,9 @@ namespace UpperBoundLimitedCollections
         {
             // Handles the upper boud limit. If this.Count is equal to 'upperBoundlimit',
             // the first element in the list is removed in order to maintain the maximum upper bound limit.
-            HandleUpperBoundLimitForAdd();
+            UpperBoundLimitHandler.CheckAndRemoveRange(this, item.Yield(), UpperBoundLimit);
 
+            // Inssert item to 'this'
             Insert(index, item);
         }
 
@@ -86,39 +90,10 @@ namespace UpperBoundLimitedCollections
         {
             // Handles the upper boud limit. If this.Count combined with collection size is equal to or greater than 'upperBoundlimit',
             // a range of items from the beginning of the list is removed in order to maintain the maximum upper bound limit.
-            HandleUpperBountLimitForAddRange(collection.Count());
+            UpperBoundLimitHandler.CheckAndRemoveRange(this, collection, UpperBoundLimit);
 
+            // Insert range to 'this'
             InsertRange(index, collection);
-        }
-
-        /// <summary>
-        /// Handles the upper bound limit. If this.Count is equal to 'upperBoundlimit',
-        /// the first element in the list is removed in order to maintain the maximum upper bound limit.
-        /// </summary>
-        /// <param name="upperBoundLimit">The maximum upper bound limit that the list should maintain.</param>
-        private void HandleUpperBoundLimitForAdd()
-        {
-            // If current count is equal to UpperBoundLimit, remove first item in list
-            if (Count == UpperBoundLimit)
-                RemoveAt(0);
-        }
-
-        /// <summary>
-        /// Handles the upper bound limit. If this.Count combined with collection count is greater or equal to 'upperBoundlimit',
-        /// a range of items from the beginning of the list will be removed in order to maintain the maximum upper bound limit.
-        /// </summary>
-        /// <param name="collectionCount"></param>
-        private void HandleUpperBountLimitForAddRange(int collectionCount)
-        {
-            // collection cannot be greater than the UpperBoundLimit
-            if (collectionCount > UpperBoundLimit)
-#pragma warning disable CA2208 // Instantiate argument exceptions correctly
-                throw new ArgumentOutOfRangeException("collection", collectionCount, "The size of param collection cannot be greater than the 'UpperBoundLimit'.");
-#pragma warning restore CA2208 // Instantiate argument exceptions correctly
-
-            // Determine the range of items to be removed, in order to maintain the upperBoundLimit
-            if (Count + collectionCount >= UpperBoundLimit)
-                RemoveRange(0, Count + collectionCount - UpperBoundLimit);
         }
     }
 }
