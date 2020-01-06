@@ -33,7 +33,7 @@ namespace UpperBoundLimitedCollections.List
         /// </summary>
         /// <param name="item">The object to append to the <c>System.Collections.Generic.ICollection</c>.</param>
         /// <exception cref="System.ArgumentNullException">The param 'item' cannot be null.</exception>
-        /// <exception cref="System.ArgumentOutOfRangeException">The param 'collection' cannot be greater than param 'upperBoundLimit'.</exception>
+        /// <exception cref="System.ArgumentOutOfRangeException">The param 'collection' size cannot be greater than param 'upperBoundLimit'.</exception>
         /// <exception cref="System.ArgumentOutOfRangeException">The param 'upperBoundLimit' must be greater than 0.</exception>
         public new void Add(T item)
         {
@@ -53,7 +53,7 @@ namespace UpperBoundLimitedCollections.List
         /// </summary>
         /// <param name="collection">The collection of objects to append to the <c>System.Collections.Generic.ICollection</c>.</param>
         /// <exception cref="System.ArgumentNullException">The param 'collection' cannot be null.</exception>
-        /// <exception cref="System.ArgumentOutOfRangeException">The param 'collection' cannot be greater than param 'upperBoundLimit'.</exception>
+        /// <exception cref="System.ArgumentOutOfRangeException">The param 'collection' size cannot be greater than param 'upperBoundLimit'.</exception>
         /// <exception cref="System.ArgumentOutOfRangeException">The param 'upperBoundLimit' must be greater than 0.</exception>
         public new void AddRange(IEnumerable<T> collection)
         {
@@ -74,7 +74,7 @@ namespace UpperBoundLimitedCollections.List
         /// <param name="index">The zero-based index at which item should be inserted.</param>
         /// <param name="item">The object to be inserted into the <c>System.Collections.Generic.ICollection</c>.</param>
         /// <exception cref="System.ArgumentNullException">The param 'item' cannot be null.</exception>
-        /// <exception cref="System.ArgumentOutOfRangeException">The param 'collection' cannot be greater than param 'upperBoundLimit'.</exception>
+        /// <exception cref="System.ArgumentOutOfRangeException">The param 'collection' size cannot be greater than param 'upperBoundLimit'.</exception>
         /// <exception cref="System.ArgumentOutOfRangeException">The param 'upperBoundLimit' must be greater than 0.</exception>
         public new void Insert(int index, T item)
         {
@@ -95,7 +95,7 @@ namespace UpperBoundLimitedCollections.List
         /// <param name="index">The zero-based index at which item should be inserted.</param>
         /// <param name="collection">The collection of objects to be inserted into the <c>System.Collections.Generic.ICollection</c>.</param>
         /// <exception cref="System.ArgumentNullException">The param 'collection' cannot be null.</exception>
-        /// <exception cref="System.ArgumentOutOfRangeException">The param 'collection' cannot be greater than param 'upperBoundLimit'.</exception>
+        /// <exception cref="System.ArgumentOutOfRangeException">The param 'collection' size cannot be greater than param 'upperBoundLimit'.</exception>
         /// <exception cref="System.ArgumentOutOfRangeException">The param 'upperBoundLimit' must be greater than 0.</exception>
         public new void InsertRange(int index, IEnumerable<T> collection)
         {

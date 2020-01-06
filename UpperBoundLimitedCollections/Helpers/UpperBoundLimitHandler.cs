@@ -14,19 +14,16 @@ namespace UpperBoundLimitedCollections.Helpers
         /// <param name="upperBoundLimit">The maximum upper bound limit that should be applied to the list. This value must be greater than 0.</param>
         /// <exception cref="System.ArgumentNullException">The param 'list' cannot be null.</exception>
         /// <exception cref="System.ArgumentOutOfRangeException">The param 'upperBoundLimit' must be greater than 0.</exception>
-        /// <exception cref="System.ArgumentOutOfRangeException">The param 'collection' cannot be greater than param 'upperBoundLimit'.</exception>
+        /// <exception cref="System.ArgumentOutOfRangeException">The param 'collection' size cannot be greater than param 'upperBoundLimit'.</exception>
         public static void CheckLimitAndReduceSize<T>(List<T> list, int collectionCount, int upperBoundLimit)
         {
-            if (list == null)
-                throw new ArgumentNullException(nameof(list), "The param 'list' cannot be null.");
-
             // upperBoundLimit must be larger than 0
             if (upperBoundLimit <= 0)
-                throw new ArgumentOutOfRangeException(nameof(upperBoundLimit), upperBoundLimit, "The param 'upperBoundLimit' must be greater than 0.");
+                throw new ArgumentOutOfRangeException(nameof(upperBoundLimit), upperBoundLimit, "The argument must be greater than 0.");
 
             // collection cannot be greater than the UpperBoundLimit
             if (collectionCount > upperBoundLimit)
-                throw new ArgumentOutOfRangeException(nameof(collectionCount), collectionCount, "The param 'collection' cannot be greater than param 'upperBoundLimit'.");
+                throw new ArgumentOutOfRangeException(nameof(collectionCount), collectionCount, "The argument size cannot be greater than param 'upperBoundLimit'.");
 
             // Calculate and remove the required range in order to maintain the upperBoundLimit
             list.RemoveRange(0, RangeCalculator.CalculateRangeToBeRemoved(list.Count, upperBoundLimit, collectionCount));

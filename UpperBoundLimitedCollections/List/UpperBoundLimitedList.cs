@@ -24,11 +24,11 @@ namespace UpperBoundLimitedCollections.List
         /// <param name="upperBoundLimit">The maximum upper bound limit that should be applied to the list. This value must be greater than 0.</param>
         /// <exception cref="System.ArgumentNullException">The param 'item' cannot be null.</exception>
         /// <exception cref="System.ArgumentOutOfRangeException">The param 'upperBoundLimit' must be greater than 0.</exception>
-        /// <exception cref="System.ArgumentOutOfRangeException">The param 'collection' cannot be greater than param 'upperBoundLimit'.</exception>
+        /// <exception cref="System.ArgumentOutOfRangeException">The param 'collection' size cannot be greater than param 'upperBoundLimit'.</exception>
         public void Add(T item, int upperBoundLimit)
         {
             if (item == null)
-                throw new ArgumentNullException(nameof(item), "The param 'item' cannot be null.");
+                throw new ArgumentNullException(nameof(item), "The argument cannot be null.");
 
             // Checks the limit and reduces the size of the list allow items to be added while maintaining upper bound limit
             UpperBoundLimitHandler.CheckLimitAndReduceSize(this, item.Yield().Count(), upperBoundLimit);
@@ -45,17 +45,17 @@ namespace UpperBoundLimitedCollections.List
         /// <param name="upperBoundLimit">The maximum upper bound limit that should be applied to the list. This value must be greater than 0.</param>
         /// <exception cref="System.ArgumentNullException">The param 'collection' cannot be null.</exception>
         /// <exception cref="System.ArgumentOutOfRangeException">The param 'upperBoundLimit' must be greater than 0.</exception>
-        /// <exception cref="System.ArgumentOutOfRangeException">The param 'collection' cannot be greater than param 'upperBoundLimit'.</exception>
+        /// <exception cref="System.ArgumentOutOfRangeException">The param 'collection' size cannot be greater than param 'upperBoundLimit'.</exception>
         public void AddRange(IEnumerable<T> collection, int upperBoundLimit)
         {
             if (collection == null)
-                throw new ArgumentNullException(nameof(collection), "The param 'collection' cannot be null.");
+                throw new ArgumentNullException(nameof(collection), "The argument cannot be null.");
 
             // Checks the limit and reduces the size of the list allow items to be added while maintaining upper bound limit
             UpperBoundLimitHandler.CheckLimitAndReduceSize(this, collection.Count(), upperBoundLimit);
 
             // Add range to 'this'
-            AddRange(collection, upperBoundLimit);
+            AddRange(collection);
         }
 
         /// <summary>
@@ -67,11 +67,11 @@ namespace UpperBoundLimitedCollections.List
         /// <param name="upperBoundLimit">The maximum upper bound limit that should be applied to the list. This value must be greater than 0.</param>
         /// <exception cref="System.ArgumentNullException">The param 'item' cannot be null.</exception>
         /// <exception cref="System.ArgumentOutOfRangeException">The param 'upperBoundLimit' must be greater than 0.</exception>
-        /// <exception cref="System.ArgumentOutOfRangeException">The param 'collection' cannot be greater than param 'upperBoundLimit'.</exception>
+        /// <exception cref="System.ArgumentOutOfRangeException">The param 'collection' size cannot be greater than param 'upperBoundLimit'.</exception>
         public void Insert(int index, T item, int upperBoundLimit)
         {
             if (item == null)
-                throw new ArgumentNullException(nameof(item), "The param 'item' cannot be null.");
+                throw new ArgumentNullException(nameof(item), "The argument cannot be null.");
 
             // Checks the limit and reduces the size of the list allow items to be added while maintaining upper bound limit
             UpperBoundLimitHandler.CheckLimitAndReduceSize(this, item.Yield().Count(), upperBoundLimit);
@@ -89,11 +89,11 @@ namespace UpperBoundLimitedCollections.List
         /// <param name="upperBoundLimit">The maximum upper bound limit that should be applied to the list. This value must be greater than 0.</param>
         /// <exception cref="System.ArgumentNullException">The param 'collection' cannot be null.</exception>
         /// <exception cref="System.ArgumentOutOfRangeException">The param 'upperBoundLimit' must be greater than 0.</exception>
-        /// <exception cref="System.ArgumentOutOfRangeException">The param 'collection' cannot be greater than param 'upperBoundLimit'.</exception>
+        /// <exception cref="System.ArgumentOutOfRangeException">The param 'collection' size cannot be greater than param 'upperBoundLimit'.</exception>
         public void InsertRange(int index, IEnumerable<T> collection, int upperBoundLimit)
         {
             if (collection == null)
-                throw new ArgumentNullException(nameof(collection), "The param 'collection' cannot be null.");
+                throw new ArgumentNullException(nameof(collection), "The argument cannot be null.");
 
             // Checks the limit and reduces the size of the list allow items to be added while maintaining upper bound limit
             UpperBoundLimitHandler.CheckLimitAndReduceSize(this, collection.Count(), upperBoundLimit);
