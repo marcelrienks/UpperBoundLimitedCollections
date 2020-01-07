@@ -1,6 +1,6 @@
 ﻿namespace UpperBoundLimitedCollections.Helpers
 {
-    public static class RangeCalculator
+    public static class Calculators
     {
         /// <summary>
         /// Calculate the range of items to be removed in order to maintain the upper bound limit.

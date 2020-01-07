@@ -130,12 +130,12 @@ namespace UpperBoundLimitedCollections.Tests.List
 
             // Assert
             var exception = Assert.ThrowsException<ArgumentNullException>(() => list.AddRange(rangeToAdd), "Exception thrown does not match expected type 'ArgumentNullException'.");
-            Assert.AreEqual("The argument cannot be null. (Parameter 'collection')", exception.Message);
+            Assert.AreEqual("The argument cannot be null. (Parameter 'range')", exception.Message);
         }
 
         /// <summary>
         /// Asserts that adding a range of items with a size greater than the UpperBoundLimit causes an
-        /// ArgumentOutOfRangeException with error message "The param 'collection' size cannot be greater than param 'upperBoundLimit'."
+        /// ArgumentOutOfRangeException with error message "The range size cannot be greater than the argument 'upperBoundLimit'."
         /// </summary>
         [TestMethod]
         public void AddRangeWithSizeGreaterThanUpperBoundLimit()
@@ -149,7 +149,7 @@ namespace UpperBoundLimitedCollections.Tests.List
 
             // Assert
             var exception = Assert.ThrowsException<ArgumentOutOfRangeException>(() => list.AddRange(rangeToAdd), "Exception thrown does not match expected type 'ArgumentNullException'.");
-            Assert.AreEqual("The argument size cannot be greater than param 'upperBoundLimit'. (Parameter 'collectionCount')\r\nActual value was 2.", exception.Message);
+            Assert.AreEqual("The range size cannot be greater than the argument 'upperBoundLimit'. (Parameter 'range')\r\nActual value was 2.", exception.Message);
         }
 
         /// <summary>
@@ -338,12 +338,12 @@ namespace UpperBoundLimitedCollections.Tests.List
 
             // Assert
             var exception = Assert.ThrowsException<ArgumentNullException>(() => list.InsertRange(0, rangeToAdd), "Exception thrown does not match expected type 'ArgumentNullException'.");
-            Assert.AreEqual("The argument cannot be null. (Parameter 'collection')", exception.Message);
+            Assert.AreEqual("The argument cannot be null. (Parameter 'range')", exception.Message);
         }
 
         /// <summary>
         /// Asserts that inserting a range of items with a size greater than the UpperBoundLimit causes an
-        /// ArgumentOutOfRangeException with error message "The param 'collection' size cannot be greater than param 'upperBoundLimit'."
+        /// ArgumentOutOfRangeException with error message "The range size cannot be greater than the argument 'upperBoundLimit'."
         /// </summary>
         [TestMethod]
         public void InsertRangeWithSizeGreaterThanUpperBoundLimit()
@@ -357,7 +357,7 @@ namespace UpperBoundLimitedCollections.Tests.List
 
             // Assert
             var exception = Assert.ThrowsException<ArgumentOutOfRangeException>(() => list.InsertRange(1, rangeToAdd), "Exception thrown does not match expected type 'ArgumentNullException'.");
-            Assert.AreEqual("The argument size cannot be greater than param 'upperBoundLimit'. (Parameter 'collectionCount')\r\nActual value was 2.", exception.Message);
+            Assert.AreEqual("The range size cannot be greater than the argument 'upperBoundLimit'. (Parameter 'range')\r\nActual value was 2.", exception.Message);
         }
 
         /// <summary>

@@ -51,20 +51,23 @@ namespace UpperBoundLimitedCollections.List
         /// Appends a range of items to the end of the <c>System.Collections.Generic.ICollection</c>,
         /// removing a range of items from the beginning of the list in order to maintain the supplied upper bound limit.
         /// </summary>
-        /// <param name="collection">The collection of objects to append to the <c>System.Collections.Generic.ICollection</c>.</param>
+        /// <param name="range">The collection of objects to append to the <c>System.Collections.Generic.ICollection</c>.</param>
         /// <exception cref="System.ArgumentNullException">The param 'collection' cannot be null.</exception>
         /// <exception cref="System.ArgumentOutOfRangeException">The param 'collection' size cannot be greater than param 'upperBoundLimit'.</exception>
         /// <exception cref="System.ArgumentOutOfRangeException">The param 'upperBoundLimit' must be greater than 0.</exception>
-        public new void AddRange(IEnumerable<T> collection)
+        public new void AddRange(IEnumerable<T> range)
         {
-            if (collection == null)
-                throw new ArgumentNullException(nameof(collection), "The argument cannot be null.");
+            if (range == null)
+                throw new ArgumentNullException(nameof(range), "The argument cannot be null.");
+
+            if (range.Count() > UpperBoundLimit)
+                throw new ArgumentOutOfRangeException(nameof(range), range.Count(), "The range size cannot be greater than the argument 'upperBoundLimit'.");
 
             // Checks the limit and reduces the size of the list allow items to be added while maintaining upper bound limit
-            UpperBoundLimitHandler.CheckLimitAndReduceSize(this, collection.Count(), UpperBoundLimit);
+            UpperBoundLimitHandler.CheckLimitAndReduceSize(this, range.Count(), UpperBoundLimit);
 
             // Add range to the base class
-            base.AddRange(collection);
+            base.AddRange(range);
         }
 
         /// <summary>
@@ -93,20 +96,23 @@ namespace UpperBoundLimitedCollections.List
         /// removing a range of items from the beginning of the list in order to maintain the supplied upper bound limit for this collection.
         /// </summary>
         /// <param name="index">The zero-based index at which item should be inserted.</param>
-        /// <param name="collection">The collection of objects to be inserted into the <c>System.Collections.Generic.ICollection</c>.</param>
+        /// <param name="range">The collection of objects to be inserted into the <c>System.Collections.Generic.ICollection</c>.</param>
         /// <exception cref="System.ArgumentNullException">The param 'collection' cannot be null.</exception>
         /// <exception cref="System.ArgumentOutOfRangeException">The param 'collection' size cannot be greater than param 'upperBoundLimit'.</exception>
         /// <exception cref="System.ArgumentOutOfRangeException">The param 'upperBoundLimit' must be greater than 0.</exception>
-        public new void InsertRange(int index, IEnumerable<T> collection)
+        public new void InsertRange(int index, IEnumerable<T> range)
         {
-            if (collection == null)
-                throw new ArgumentNullException(nameof(collection), "The argument cannot be null.");
+            if (range == null)
+                throw new ArgumentNullException(nameof(range), "The argument cannot be null.");
+
+            if (range.Count() > UpperBoundLimit)
+                throw new ArgumentOutOfRangeException(nameof(range), range.Count(), "The range size cannot be greater than the argument 'upperBoundLimit'.");
 
             // Checks the limit and reduces the size of the list allow items to be added while maintaining upper bound limit
-            UpperBoundLimitHandler.CheckLimitAndReduceSize(this, collection.Count(), UpperBoundLimit);
+            UpperBoundLimitHandler.CheckLimitAndReduceSize(this, range.Count(), UpperBoundLimit);
 
             // Insert range to the base class
-            base.InsertRange(index, collection);
+            base.InsertRange(index, range);
         }
     }
 }
