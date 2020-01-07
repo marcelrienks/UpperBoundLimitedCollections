@@ -38,7 +38,7 @@ namespace UpperBoundLimitedCollections.List
         public new void Add(T item)
         {
             if (item == null)
-                throw new ArgumentNullException(nameof(item), "The param 'item' cannot be null.");
+                throw new ArgumentNullException(nameof(item), "The argument cannot be null.");
 
             // Checks the limit and reduces the size of the list allow items to be added while maintaining upper bound limit
             UpperBoundLimitHandler.CheckLimitAndReduceSize(this, item.Yield().Count(), UpperBoundLimit);
@@ -58,7 +58,7 @@ namespace UpperBoundLimitedCollections.List
         public new void AddRange(IEnumerable<T> collection)
         {
             if (collection == null)
-                throw new ArgumentNullException(nameof(collection), "The param 'collection' cannot be null.");
+                throw new ArgumentNullException(nameof(collection), "The argument cannot be null.");
 
             // Checks the limit and reduces the size of the list allow items to be added while maintaining upper bound limit
             UpperBoundLimitHandler.CheckLimitAndReduceSize(this, collection.Count(), UpperBoundLimit);
@@ -79,7 +79,7 @@ namespace UpperBoundLimitedCollections.List
         public new void Insert(int index, T item)
         {
             if (item == null)
-                throw new ArgumentNullException(nameof(item), "The param 'item' cannot be null.");
+                throw new ArgumentNullException(nameof(item), "The argument cannot be null.");
 
             // Checks the limit and reduces the size of the list allow items to be added while maintaining upper bound limit
             UpperBoundLimitHandler.CheckLimitAndReduceSize(this, item.Yield().Count(), UpperBoundLimit);
@@ -100,7 +100,7 @@ namespace UpperBoundLimitedCollections.List
         public new void InsertRange(int index, IEnumerable<T> collection)
         {
             if (collection == null)
-                throw new ArgumentNullException(nameof(collection), "The param 'collection' cannot be null.");
+                throw new ArgumentNullException(nameof(collection), "The argument cannot be null.");
 
             // Checks the limit and reduces the size of the list allow items to be added while maintaining upper bound limit
             UpperBoundLimitHandler.CheckLimitAndReduceSize(this, collection.Count(), UpperBoundLimit);
