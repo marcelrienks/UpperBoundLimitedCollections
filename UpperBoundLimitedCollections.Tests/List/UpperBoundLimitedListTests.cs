@@ -11,7 +11,7 @@ namespace UpperBoundLimitedCollections.Tests.List
         #region Add
 
         /// <summary>
-        /// Asserts that trying to add a null item to the list causes an
+        /// Asserts that adding a null item to the list causes an
         /// ArgumentNullException with error message of "The argument cannot be null. (Parameter 'item')"
         /// </summary>
         [TestMethod]
@@ -30,7 +30,7 @@ namespace UpperBoundLimitedCollections.Tests.List
         }
 
         /// <summary>
-        /// Asserts that trying to add an item to the list, and setting the upper bound limit to 0 causes an
+        /// Asserts that adding an item to the list, and setting the upper bound limit to 0 causes an
         /// ArgumentOutOfRangeException with error message 'The param 'upperBoundLimit' must be greater than 0.'
         /// </summary>
         [TestMethod]
@@ -103,11 +103,11 @@ namespace UpperBoundLimitedCollections.Tests.List
         }
 
         /// <summary>
-        /// Tries to add an item to the list supplied, passing in the upperBoundLimit.
+        /// Adds an item to the list supplied, passing in the upperBoundLimit.
         /// Then asserts that list size matches upperBoundLimit, and that the last item in the list matches the item suplied.
         /// </summary>
-        /// <param name="item">the item to be added to the UpperBoundLimtedList</param>
-        /// <param name="upperBoundLimit">the upper bound limit to be enforced</param>
+        /// <param name="item">item to be added to the UpperBoundLimtedList</param>
+        /// <param name="upperBoundLimit">upper bound limit to be enforced</param>
         /// <param name="list">the UpperBoundLimtedList to be added to</param>
         private void AddItemAndAssert(string item, int upperBoundLimit, UpperBoundLimitedList<string> list)
         {
@@ -124,7 +124,7 @@ namespace UpperBoundLimitedCollections.Tests.List
         #region AddRange
 
         /// <summary>
-        /// Asserts that trying to add a null range to the list causes an
+        /// Asserts that adding a null range to the list causes an
         /// ArgumentNullException with error message "The argument cannot be null. (Parameter 'collection')"
         /// </summary>
         [TestMethod]
@@ -140,6 +140,25 @@ namespace UpperBoundLimitedCollections.Tests.List
             // Assert
             var exception = Assert.ThrowsException<ArgumentNullException>(() => list.AddRange(rangeToAdd, upperBoundLimit), "Exception thrown does not match expected type 'ArgumentNullException'.");
             Assert.AreEqual("The argument cannot be null. (Parameter 'collection')", exception.Message);
+        }
+
+        /// <summary>
+        /// Asserts that adding a range of items to the list, and setting the upper bound limit to 0 causes an
+        /// ArgumentOutOfRangeException with error message 'The param 'upperBoundLimit' must be greater than 0.'
+        /// </summary>
+        [TestMethod]
+        public void AddRangeWithUpperBoundLimitOfZero()
+        {
+            // Expected
+            var rangeToAdd = new List<string>() { "1", "2" };
+            var upperBoundLimit = 0;
+
+            // Variables
+            var list = new UpperBoundLimitedList<string>();
+
+            // Assert
+            var exception = Assert.ThrowsException<ArgumentOutOfRangeException>(() => list.AddRange(rangeToAdd, upperBoundLimit), "Exception thrown does not match expected type 'ArgumentNullException'.");
+            Assert.AreEqual("The argument must be greater than 0. (Parameter 'upperBoundLimit')\r\nActual value was 0.", exception.Message);
         }
 
         /// <summary>
@@ -216,12 +235,12 @@ namespace UpperBoundLimitedCollections.Tests.List
         }
 
         /// <summary>
-        /// Tries to add a range of items to the list supplied, passing in the upperBoundLimit.
+        /// Adds a range of items to the list supplied, passing in the upperBoundLimit.
         /// Then asserts that list size matches upperBoundLimit, and that the last item in the list matches the item suplied.
         /// </summary>
-        /// <param name="listToBeAdded"></param>
-        /// <param name="upperBoundLimit"></param>
-        /// <param name="list"></param>
+        /// <param name="listToBeAdded">list of items to be added to the UpperBoundLimtedList</param>
+        /// <param name="upperBoundLimit">upper bound limit to be enforced</param>
+        /// <param name="list">the UpperBoundLimtedList to be added to</param>
         private void AddRangeItemAndAssert(List<string> listToBeAdded, int upperBoundLimit, UpperBoundLimitedList<string> list)
         {
             // Add an item to this list, setting the UpperBoundLimit
@@ -235,6 +254,25 @@ namespace UpperBoundLimitedCollections.Tests.List
         #endregion
 
         #region Insert
+
+        /// <summary>
+        /// Asserts that inserting a null item to the list causes an
+        /// ArgumentNullException with error message of "The argument cannot be null. (Parameter 'item')"
+        /// </summary>
+        [TestMethod]
+        public void InsertNullItem()
+        {
+            // Expected
+            string item = null;
+            var upperBoundLimit = 0;
+
+            // Variables
+            var list = new UpperBoundLimitedList<string>();
+
+            // Assert
+            var exception = Assert.ThrowsException<ArgumentNullException>(() => list.Insert(0, item, upperBoundLimit), "Exception thrown does not match expected type 'ArgumentNullException'.");
+            Assert.AreEqual("The argument cannot be null. (Parameter 'item')", exception.Message);
+        }
 
         /// <summary>
         /// Asserts that inserting an item into a list with a size less than the UpperBoundLimit
@@ -294,10 +332,10 @@ namespace UpperBoundLimitedCollections.Tests.List
         /// Tries to insert an item into the list supplied, passing in the upperBoundLimit.
         /// Then asserts that list size matches upperBoundLimit, and that the item at index in the list matches the item suplied.
         /// </summary>
-        /// <param name="index"></param>
-        /// <param name="item"></param>
-        /// <param name="upperBoundLimit"></param>
-        /// <param name="list"></param>
+        /// <param name="index">index at which to insert the item</param>
+        /// <param name="item">item to be inserted into the UpperBoundLimtedList</param>
+        /// <param name="upperBoundLimit">upper bound limit to be enforced</param>
+        /// <param name="list">the UpperBoundLimtedList to be added to</param>
         private void InsertItemAndAssert(int index, string item, int upperBoundLimit, UpperBoundLimitedList<string> list)
         {
             // Add an item to this list, setting the UpperBoundLimit
@@ -310,6 +348,136 @@ namespace UpperBoundLimitedCollections.Tests.List
 
         #endregion
 
-        //TODO: InsertRange
+        #region InsertRange
+
+        /// <summary>
+        /// Asserts that inserting a null range to the list causes an
+        /// ArgumentNullException with error message "The argument cannot be null. (Parameter 'collection')"
+        /// </summary>
+        [TestMethod]
+        public void InsertNullRange()
+        {
+            // Expected
+            IEnumerable<string> rangeToAdd = null;
+            var upperBoundLimit = 0;
+
+            // Variables
+            var list = new UpperBoundLimitedList<string>();
+
+            // Assert
+            var exception = Assert.ThrowsException<ArgumentNullException>(() => list.InsertRange(0, rangeToAdd, upperBoundLimit), "Exception thrown does not match expected type 'ArgumentNullException'.");
+            Assert.AreEqual("The argument cannot be null. (Parameter 'collection')", exception.Message);
+        }
+
+        /// <summary>
+        /// Asserts that inserting a range of items to the list, and setting the upper bound limit to 0 causes an
+        /// ArgumentOutOfRangeException with error message 'The param 'upperBoundLimit' must be greater than 0.'
+        /// </summary>
+        [TestMethod]
+        public void InsertRangeWithUpperBoundLimitOfZero()
+        {
+            // Expected
+            var rangeToAdd = new List<string>() { "1", "2" };
+            var upperBoundLimit = 0;
+
+            // Variables
+            var list = new UpperBoundLimitedList<string>();
+
+            // Assert
+            var exception = Assert.ThrowsException<ArgumentOutOfRangeException>(() => list.InsertRange(1, rangeToAdd, upperBoundLimit), "Exception thrown does not match expected type 'ArgumentNullException'.");
+            Assert.AreEqual("The argument must be greater than 0. (Parameter 'upperBoundLimit')\r\nActual value was 0.", exception.Message);
+        }
+
+        /// <summary>
+        /// Asserts that inserting a range of items with a size greater than the UpperBoundLimit causes an
+        /// ArgumentOutOfRangeException with error message "The param 'collection' size cannot be greater than param 'upperBoundLimit'."
+        /// </summary>
+        [TestMethod]
+        public void InsertRangeWithSizeGreaterThanUpperBoundLimit()
+        {
+            // Expected
+            var rangeToAdd = new List<string>() { "1", "2" };
+            var upperBoundLimit = 1;
+
+            // Variables
+            var list = new UpperBoundLimitedList<string>();
+
+            // Assert
+            var exception = Assert.ThrowsException<ArgumentOutOfRangeException>(() => list.InsertRange(1, rangeToAdd, upperBoundLimit), "Exception thrown does not match expected type 'ArgumentNullException'.");
+            Assert.AreEqual("The argument size cannot be greater than param 'upperBoundLimit'. (Parameter 'collectionCount')\r\nActual value was 2.", exception.Message);
+        }
+
+        /// <summary>
+        /// Asserts that adding a range of items to a list with a size less than the UpperBoundLimit
+        /// results in the items being appended to the list with nothing being removed.
+        /// </summary>
+        [TestMethod]
+        public void InsertRangeWithSizeBelowLimit()
+        {
+            // Expected
+            var rangeToAdd = new List<string>() { "3", "4" };
+            var upperBoundLimit = 4;
+
+            // Function
+            var list = new UpperBoundLimitedList<string>() { "1", "2" };
+
+            // Assert
+            InsertRangeOfItemsAndAssert(1, rangeToAdd, upperBoundLimit, list);
+        }
+
+        /// <summary>
+        /// Asserts that adding a range of items to a list with a size the same as the UpperBoundLimit
+        /// results in the the first few items in the list being removed, and the new items being appended to the list.
+        /// </summary>
+        [TestMethod]
+        public void InsertRangeWithSizeAtLimit()
+        {
+            // Expected
+            var rangeToAdd = new List<string>() { "4", "5" };
+            var upperBoundLimit = 3;
+
+            // Function
+            var list = new UpperBoundLimitedList<string>() { "1", "2", "3" };
+
+            // Assert
+            InsertRangeOfItemsAndAssert(1, rangeToAdd, upperBoundLimit, list);
+        }
+
+        /// <summary>
+        /// Asserts that adding a range of items to a list with a size greater than the UpperBoundLimit
+        /// results in the the first few items in the list being removed, and the new items being appended to the list.
+        /// </summary>
+        [TestMethod]
+        public void InsertRangeWithListCountAboveLimit()
+        {
+            // Function
+            var rangeToAdd = new List<string>() { "5", "6" };
+            var upperBoundLimit = 3;
+
+            // Variables
+            var list = new UpperBoundLimitedList<string>() { "1", "2", "3", "4" };
+
+            // Assert
+            InsertRangeOfItemsAndAssert(1, rangeToAdd, upperBoundLimit, list);
+        }
+
+        /// <summary>
+        /// Inserts a range of items to the list supplied, passing in the upperBoundLimit.
+        /// Then asserts that list size matches upperBoundLimit, and that the last item in the list matches the item suplied.
+        /// </summary>
+        /// <param name="listToBeAdded">list of items to be added to the UpperBoundLimtedList</param>
+        /// <param name="upperBoundLimit">upper bound limit to be enforced</param>
+        /// <param name="list">the UpperBoundLimtedList to be added to</param>
+        private void InsertRangeOfItemsAndAssert(int index, List<string> listToBeAdded, int upperBoundLimit, UpperBoundLimitedList<string> list)
+        {
+            // Add an item to this list, setting the UpperBoundLimit
+            list.InsertRange(index, listToBeAdded, upperBoundLimit);
+
+            // Assert
+            Assert.AreEqual(upperBoundLimit, list.Count);
+            Assert.AreEqual(listToBeAdded[0], list[index]);
+        }
+
+        #endregion
     }
 }

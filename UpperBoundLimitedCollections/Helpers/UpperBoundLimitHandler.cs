@@ -17,6 +17,9 @@ namespace UpperBoundLimitedCollections.Helpers
         /// <exception cref="System.ArgumentOutOfRangeException">The param 'collection' size cannot be greater than param 'upperBoundLimit'.</exception>
         public static void CheckLimitAndReduceSize<T>(List<T> list, int collectionCount, int upperBoundLimit)
         {
+            if (list == null)
+                throw new ArgumentNullException(nameof(list), "The argument cannot be null.");
+
             // upperBoundLimit must be larger than 0
             if (upperBoundLimit <= 0)
                 throw new ArgumentOutOfRangeException(nameof(upperBoundLimit), upperBoundLimit, "The argument must be greater than 0.");
