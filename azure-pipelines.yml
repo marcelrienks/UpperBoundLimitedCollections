@@ -35,5 +35,5 @@ steps:
 - task: VSTest@2
   inputs:
     testSelector: 'testAssemblies'
-    testAssemblyVer2: 'UpperBoundLimitedCollections.Tests.dll'
+    testAssemblyVer2: '**\UpperBoundLimitedCollections.Test*.dll'
     searchFolder: '$(System.DefaultWorkingDirectory)'
