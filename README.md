@@ -32,7 +32,7 @@ or use the global UpperBoundLimit property assigned when passing a limit argumen
 ### `System.Collections.Generic.Queue<T>`
 * Enqueue()
 ## Usage:
-**_Note: All examples below use the ```System.Collections.Generic.List<T>``` type, however the logic reamins the same across all implemented collection types listed above._**
+**_Note: All examples below use the ```System.Collections.Generic.List<T>``` type, however the logic remains the same across all implemented collection types listed above._**
 ### Example 1:
 This example shows how to add a new item to an UpperBoundLimited type of ```System.Collections.Generic.List<T>```, with an 'upperBoundLimit' that will allow the addition without changing the size of the collection.  
 ```csharp
