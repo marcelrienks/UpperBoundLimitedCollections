@@ -71,9 +71,9 @@ This example shows how to insert an item to an UpperBoundLimited type of ```Syst
 Results in a list of the following strings, due to the first 2 items in the list being removed in order to allow for the insertion of the new item at index 1 to take place while maintaining the list size at 3.  
 `{ "C", "x", "D" }`
 ## Possible Exceptions:
-Raised if the item or range of items being added is null.
-* `ArgumentNullException` "The argument cannot be null. (Parameter 'item')"
-* `ArgumentNullException` "The argument cannot be null. (Parameter 'collection')"
+Raised if the key for a dictionary or the range for a list null.
+* `ArgumentNullException` "The argument cannot be null. (Parameter 'key')"
+* `ArgumentNullException` "The argument cannot be null. (Parameter 'range')"
 
 Raised if the 'upperBoundLimit' argument, passed in as overloaded methods, or the collection constructor is 0.
 * `ArgumentOutOfRangeException` "The argument must be greater than 0. (Parameter 'upperBoundLimit')"
