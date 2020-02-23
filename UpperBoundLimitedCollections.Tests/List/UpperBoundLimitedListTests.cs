@@ -1,7 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using UpperBoundLimitedCollections.List;
+using UpperBoundLimitedCollections.CollectionTypes.List;
 
 namespace UpperBoundLimitedCollections.Tests.List
 {
@@ -9,25 +9,6 @@ namespace UpperBoundLimitedCollections.Tests.List
     public class UpperBoundLimitedListTests
     {
         #region Add
-
-        /// <summary>
-        /// Asserts that adding a null item to the list causes an
-        /// ArgumentNullException with error message of "The argument cannot be null. (Parameter 'item')"
-        /// </summary>
-        [TestMethod]
-        public void AddNullItem()
-        {
-            // Expected
-            string item = null;
-            var upperBoundLimit = 0;
-
-            // Variables
-            var list = new UpperBoundLimitedList<string>();
-
-            // Assert
-            var exception = Assert.ThrowsException<ArgumentNullException>(() => list.Add(item, upperBoundLimit), "Exception thrown does not match expected type 'ArgumentNullException'.");
-            Assert.AreEqual("The argument cannot be null. (Parameter 'item')", exception.Message);
-        }
 
         /// <summary>
         /// Asserts that adding an item to the list, and setting the upper bound limit to 0 causes an
@@ -46,6 +27,23 @@ namespace UpperBoundLimitedCollections.Tests.List
             // Assert
             var exception = Assert.ThrowsException<ArgumentOutOfRangeException>(() => list.Add(item, upperBoundLimit), "Exception thrown does not match expected type 'ArgumentNullException'.");
             Assert.AreEqual("The argument must be greater than 0. (Parameter 'upperBoundLimit')\r\nActual value was 0.", exception.Message);
+        }
+
+        /// <summary>
+        /// Asserts that adding a null item is allowed
+        /// </summary>
+        [TestMethod]
+        public void AddNullItem()
+        {
+            // Expected
+            string item = null;
+            var upperBoundLimit = 1;
+
+            // Variables
+            var list = new UpperBoundLimitedList<string>();
+
+            // Assert
+            AddItemAndAssert(item, upperBoundLimit, list);
         }
 
         /// <summary>
@@ -256,25 +254,6 @@ namespace UpperBoundLimitedCollections.Tests.List
         #region Insert
 
         /// <summary>
-        /// Asserts that inserting a null item to the list causes an
-        /// ArgumentNullException with error message of "The argument cannot be null. (Parameter 'item')"
-        /// </summary>
-        [TestMethod]
-        public void InsertNullItem()
-        {
-            // Expected
-            string item = null;
-            var upperBoundLimit = 0;
-
-            // Variables
-            var list = new UpperBoundLimitedList<string>();
-
-            // Assert
-            var exception = Assert.ThrowsException<ArgumentNullException>(() => list.Insert(0, item, upperBoundLimit), "Exception thrown does not match expected type 'ArgumentNullException'.");
-            Assert.AreEqual("The argument cannot be null. (Parameter 'item')", exception.Message);
-        }
-
-        /// <summary>
         /// Asserts that inserting an item to the list, and setting the upper bound limit to 0 causes an
         /// ArgumentOutOfRangeException with error message 'The argument must be greater than 0.'
         /// </summary>
@@ -291,6 +270,24 @@ namespace UpperBoundLimitedCollections.Tests.List
             // Assert
             var exception = Assert.ThrowsException<ArgumentOutOfRangeException>(() => list.Add(item, upperBoundLimit), "Exception thrown does not match expected type 'ArgumentNullException'.");
             Assert.AreEqual("The argument must be greater than 0. (Parameter 'upperBoundLimit')\r\nActual value was 0.", exception.Message);
+        }
+
+        /// <summary>
+        /// Asserts that inserting a null item to the list causes an
+        /// ArgumentNullException with error message of "The argument cannot be null. (Parameter 'item')"
+        /// </summary>
+        [TestMethod]
+        public void InsertNullItem()
+        {
+            // Expected
+            string item = null;
+            var upperBoundLimit = 1;
+
+            // Variables
+            var list = new UpperBoundLimitedList<string>();
+
+            // Assert
+            InsertItemAndAssert(0, item, upperBoundLimit, list);
         }
 
         /// <summary>

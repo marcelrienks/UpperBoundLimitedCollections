@@ -1,7 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using UpperBoundLimitedCollections.List;
+using UpperBoundLimitedCollections.CollectionTypes.List;
 
 namespace UpperBoundLimitedCollections.Tests.List
 {
@@ -25,8 +25,7 @@ namespace UpperBoundLimitedCollections.Tests.List
         #region Add
 
         /// <summary>
-        /// Asserts that adding a null item to the list causes an
-        /// ArgumentNullException with error message of "The argument cannot be null. (Parameter 'item')"
+        /// Asserts that adding a null item is allowed
         /// </summary>
         [TestMethod]
         public void AddNullItem()
@@ -39,8 +38,7 @@ namespace UpperBoundLimitedCollections.Tests.List
             var list = new StrictUpperBoundLimitedList<string>(upperBoundLimit);
 
             // Assert
-            var exception = Assert.ThrowsException<ArgumentNullException>(() => list.Add(item), "Exception thrown does not match expected type 'ArgumentNullException'.");
-            Assert.AreEqual("The argument cannot be null. (Parameter 'item')", exception.Message);
+            AddItemAndAssert(item, list);
         }
 
         /// <summary>
@@ -246,8 +244,7 @@ namespace UpperBoundLimitedCollections.Tests.List
             var list = new StrictUpperBoundLimitedList<string>(upperBoundLimit);
 
             // Assert
-            var exception = Assert.ThrowsException<ArgumentNullException>(() => list.Insert(0, item), "Exception thrown does not match expected type 'ArgumentNullException'.");
-            Assert.AreEqual("The argument cannot be null. (Parameter 'item')", exception.Message);
+            InsertItemAndAssert(0, item, list);
         }
 
         /// <summary>

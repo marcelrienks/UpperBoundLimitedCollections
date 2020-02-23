@@ -1,9 +1,9 @@
-﻿using UpperBoundLimitedCollections.Helpers;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using UpperBoundLimitedCollections.Handlers;
+using UpperBoundLimitedCollections.Helpers;
 
-namespace UpperBoundLimitedCollections.List
+namespace UpperBoundLimitedCollections.CollectionTypes.List
 {
     public class StrictUpperBoundLimitedList<T> : List<T>
     {
@@ -20,9 +20,7 @@ namespace UpperBoundLimitedCollections.List
         /// <exception cref="System.ArgumentOutOfRangeException">The argument upperBoundLimit must be greater than 0. (Parameter 'upperBoundLimit')</exception>
         public StrictUpperBoundLimitedList(int upperBoundLimit)
         {
-            // upperBoundLimit must be larger than 0
-            if (upperBoundLimit <= 0)
-                throw new ArgumentOutOfRangeException(nameof(upperBoundLimit), upperBoundLimit, "The argument must be greater than 0.");
+            Validators.ValidateParameters(upperBoundLimit);
 
             UpperBoundLimit = upperBoundLimit;
         }
@@ -32,13 +30,10 @@ namespace UpperBoundLimitedCollections.List
         /// removing a range of items from the beginning of the list in order to maintain the supplied upper bound limit.
         /// </summary>
         /// <param name="item">The object to append to the <c>System.Collections.Generic.List<T></c>.</param>
-        /// <exception cref="System.ArgumentNullException">The argument cannot be null. (Parameter 'item')</exception>
         public new void Add(T item)
         {
-            ValidateItemParameter(item);
-
             // Checks the limit and reduces the size of the list allow items to be added while maintaining upper bound limit
-            UpperBoundLimitHandler.CheckLimitAndReduceSize(this, item.Yield().Count(), UpperBoundLimit);
+            UpperBoundLimitHandler.ReduceSize(this, 1, UpperBoundLimit);
 
             // Add the item to the base class
             base.Add(item);
@@ -53,10 +48,10 @@ namespace UpperBoundLimitedCollections.List
         /// <exception cref="System.ArgumentOutOfRangeException">The range size cannot be greater than the argument 'upperBoundLimit'. (Parameter 'range')</exception>
         public new void AddRange(IEnumerable<T> range)
         {
-            ValidateRangeParameter(range);
+            Validators.ValidateParameters(range, UpperBoundLimit);
 
             // Checks the limit and reduces the size of the list allow items to be added while maintaining upper bound limit
-            UpperBoundLimitHandler.CheckLimitAndReduceSize(this, range.Count(), UpperBoundLimit);
+            UpperBoundLimitHandler.ReduceSize(this, range.Count(), UpperBoundLimit);
 
             // Add range to the base class
             base.AddRange(range);
@@ -68,13 +63,10 @@ namespace UpperBoundLimitedCollections.List
         /// </summary>
         /// <param name="index">The zero-based index at which item should be inserted.</param>
         /// <param name="item">The object to be inserted into the <c>System.Collections.Generic.List<T></c>.</param>
-        /// <exception cref="System.ArgumentNullException">The argument cannot be null. (Parameter 'item')</exception>
         public new void Insert(int index, T item)
         {
-            ValidateItemParameter(item);
-
             // Checks the limit and reduces the size of the list allow items to be added while maintaining upper bound limit
-            UpperBoundLimitHandler.CheckLimitAndReduceSize(this, item.Yield().Count(), UpperBoundLimit);
+            UpperBoundLimitHandler.ReduceSize(this, 1, UpperBoundLimit);
 
             // Insert item to the base class
             base.Insert(index, item);
@@ -90,39 +82,13 @@ namespace UpperBoundLimitedCollections.List
         /// <exception cref="System.ArgumentOutOfRangeException">The range size cannot be greater than the argument 'upperBoundLimit'. (Parameter 'range')</exception>
         public new void InsertRange(int index, IEnumerable<T> range)
         {
-            ValidateRangeParameter(range);
+            Validators.ValidateParameters(range, UpperBoundLimit);
 
             // Checks the limit and reduces the size of the list allow items to be added while maintaining upper bound limit
-            UpperBoundLimitHandler.CheckLimitAndReduceSize(this, range.Count(), UpperBoundLimit);
+            UpperBoundLimitHandler.ReduceSize(this, range.Count(), UpperBoundLimit);
 
             // Insert range to the base class
             base.InsertRange(index, range);
-        }
-
-        /// <summary>
-        /// Validate the key and upperBoundLimit parameters supplied.
-        /// </summary>
-        /// <param name="item">The object to append to the <c>System.Collections.Generic.List<T></c>.</param>
-        /// <exception cref="System.ArgumentNullException">The argument cannot be null. (Parameter 'item')</exception>
-        private void ValidateItemParameter(T item)
-        {
-            if (item == null)
-                throw new ArgumentNullException(nameof(item), "The argument cannot be null.");
-        }
-
-        /// <summary>
-        /// Validate the key and upperBoundLimit parameters supplied.
-        /// </summary>
-        /// <param name="item">The object to append to the <c>System.Collections.Generic.List<T></c>.</param>
-        /// <exception cref="System.ArgumentNullException">The argument cannot be null. (Parameter 'range')</exception>
-        /// <exception cref="System.ArgumentOutOfRangeException">The range size cannot be greater than the argument 'upperBoundLimit'. (Parameter 'range')</exception>
-        private void ValidateRangeParameter(IEnumerable<T> range)
-        {
-            if (range == null)
-                throw new ArgumentNullException(nameof(range), "The argument cannot be null.");
-
-            if (range.Count() > UpperBoundLimit)
-                throw new ArgumentOutOfRangeException(nameof(range), range.Count(), "The range size cannot be greater than the argument 'upperBoundLimit'.");
         }
     }
 }

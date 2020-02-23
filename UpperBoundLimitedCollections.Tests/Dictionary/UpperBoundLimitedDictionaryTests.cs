@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using UpperBoundLimitedCollections.Dictionary;
+using UpperBoundLimitedCollections.CollectionTypes.Dictionary;
 
 namespace UpperBoundLimitedCollections.Tests.Dictionary
 {

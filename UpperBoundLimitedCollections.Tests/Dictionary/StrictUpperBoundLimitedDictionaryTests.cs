@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using UpperBoundLimitedCollections.Dictionary;
+using UpperBoundLimitedCollections.CollectionTypes.Dictionary;
 
 namespace UpperBoundLimitedCollections.Tests.Dictionary
 {
@@ -62,7 +62,7 @@ namespace UpperBoundLimitedCollections.Tests.Dictionary
             };
 
             // Assert
-            AddItemAndAssert(key, value, upperBoundLimit, dictionary);
+            AddItemAndAssert(key, value, dictionary);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace UpperBoundLimitedCollections.Tests.Dictionary
             };
 
             // Assert
-            AddItemAndAssert(key, value, upperBoundLimit, dictionary);
+            AddItemAndAssert(key, value, dictionary);
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace UpperBoundLimitedCollections.Tests.Dictionary
             };
 
             // Assert
-            AddItemAndAssert(key, value, upperBoundLimit, dictionary);
+            AddItemAndAssert(key, value, dictionary);
         }
 
         /// <summary>
@@ -122,13 +122,13 @@ namespace UpperBoundLimitedCollections.Tests.Dictionary
         /// <param name="value">the value to be added to the UpperBoundLimtedList</param>
         /// <param name="upperBoundLimit">upper bound limit to be enforced</param>
         /// <param name="dictionary">the UpperBoundLimteddictionary to be added to</param>
-        private void AddItemAndAssert(string key, string value, int upperBoundLimit, StrictUpperBoundLimitedDictionary<string, string> dictionary)
+        private void AddItemAndAssert(string key, string value, StrictUpperBoundLimitedDictionary<string, string> dictionary)
         {
             // Add an item to this list, setting the UpperBoundLimit
             dictionary.Add(key, value);
 
             // Assert
-            Assert.AreEqual(upperBoundLimit, dictionary.Count);
+            Assert.AreEqual(dictionary.UpperBoundLimit, dictionary.Count);
             Assert.IsTrue(dictionary.ContainsKey(key));
             Assert.IsTrue(dictionary.ContainsValue(value));
         }

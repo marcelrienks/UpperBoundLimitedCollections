@@ -13,9 +13,9 @@ A collection type that takes an 'upper bound limit' argument in the constructor 
 Currently implemented:
 * `System.Collections.Generic.List<T>`
 * `System.Collections.Generic.Dictionary<TKey,TValue>`
+* `System.Collections.Generic.Queue<T>`
 
 *Still to be implemented:*
-* `System.Collections.Generic.Queue<T>`
 * `System.Collections.Generic.Stack<T>`
 ## Collection functions applicable:
 The following collection functions have either  
