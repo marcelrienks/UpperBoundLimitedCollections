@@ -8,6 +8,9 @@ namespace UpperBoundLimitedCollections.Tests.List
     [TestClass]
     public class StrictStrictUpperBoundLimitedListTests
     {
+        /// <summary>
+        /// Asserts that initialising a StrictStrictUpperBoundLimitedList object fails if the limit is 0
+        /// </summary>
         [TestMethod]
         public void InitializeStrictStrictUpperBoundLimitedListWithZeroLimit()
         {
@@ -15,7 +18,8 @@ namespace UpperBoundLimitedCollections.Tests.List
             var upperBoundLimit = 0;
 
             // Assert
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() => new StrictUpperBoundLimitedList<string>(upperBoundLimit), "The param upperBoundLimit must be greater than 0.");
+            var exception = Assert.ThrowsException<ArgumentOutOfRangeException>(() => new StrictUpperBoundLimitedList<string>(upperBoundLimit), "Exception thrown does not match expected type 'ArgumentNullException'.");
+            Assert.AreEqual("The argument must be greater than 0. (Parameter 'upperBoundLimit')\r\nActual value was 0.", exception.Message);
         }
 
         #region Add
