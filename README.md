@@ -18,13 +18,19 @@ Currently implemented:
 *Still to be implemented:*
 * `System.Collections.Generic.Stack<T>`
 ## Collection functions applicable:
-The following collection functions have either  
+The following collection functions either have  
 an overload allowing for a limit argument to be passed in when using an **UpperBoundLimited** type,  
 or use the global UpperBoundLimit property assigned when passing a limit argument in the constructor when creating a **StrictUpperBoundLimited** type.
+### `System.Collections.Generic.List<T>`
 * Add()
 * AddRange()
 * Insert()
 * InsertRange()
+### `System.Collections.Generic.Dictionary<TKey,TValue>`
+* Add()
+* TryAdd()
+### `System.Collections.Generic.Queue<T>`
+* Enqueue()
 ## Usage:
 **_Note: All examples below use the ```System.Collections.Generic.List<T>``` type, however the logic reamins the same across all implemented collection types listed above._**
 ### Example 1:
