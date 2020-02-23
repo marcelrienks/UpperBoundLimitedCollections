@@ -12,31 +12,41 @@ A collection type that takes an 'upper bound limit' argument in the constructor 
 ## Types of Collections:
 Currently implemented:
 * `System.Collections.Generic.List<T>`
+* `System.Collections.Generic.Dictionary<TKey,TValue>`
 
 *Still to be implemented:*
-* `System.Collections.Generic.Dictionary<TKey,TValue>`
 * `System.Collections.Generic.Queue<T>`
 * `System.Collections.Generic.Stack<T>`
 ## Collection functions applicable:
 The following collection functions have either  
-an overload allowing for a limit argument to be passed in when using an **UpperBoundLimited** type.  
+an overload allowing for a limit argument to be passed in when using an **UpperBoundLimited** type,  
 or use the global UpperBoundLimit property assigned when passing a limit argument in the constructor when creating a **StrictUpperBoundLimited** type.
 * Add()
 * AddRange()
 * Insert()
 * InsertRange()
 ## Usage:
+**_Note: All examples below use the ```System.Collections.Generic.List<T>``` type, however the logic reamins the same across all implemented collection types listed above._**
 ### Example 1:
-This example shows how to add a new item to an UpperBoundLimited type of limitation, of ```System.Collections.Generic.List<T>```  
+This example shows how to add a new item to an UpperBoundLimited type of ```System.Collections.Generic.List<T>```, with an 'upperBoundLimit' that will allow the addition without changing the size of the collection.  
 ```csharp
     var list = new UpperBoundLimitedList<string>() { "one", "two", "three" };
 
     list.Add("four", 5);
 ```
-Results in a list of the following strings, due to the upper bound limit being larger than the total number of items in the list, even after the addition of the new item, allowing for maintaining the list size at 5.  
+Results in a list of the following strings, due to the upper bound limit being larger than the total number of items in the list, even after the addition of the new item. Allowing for the list size to be maintained at the 'upperBoundLimit' of 5.  
 `{ "one", "two", "three", "four" }`
 ### Example 2:
-This example shows how to add a range of items to an UpperBoundLimited type of limitation, of ```System.Collections.Generic.List<T>```  
+This example shows how to add a new item to an UpperBoundLimited type of ```System.Collections.Generic.List<T>```, with an 'upperBoundLimit' that will reduce the size of the collection before adding the new item.  
+```csharp
+    var list = new UpperBoundLimitedList<string>() { "one", "two", "three" };
+
+    list.Add("four", 2);
+```
+Results in a list of the following strings, due to the upper bound limit being smaller than the total number of items in the list, the first two items were removed. Allowing for the list size to be maintained at the 'upperBoundLimit' of 2.  
+`{ "three", "four" }`
+### Example 3:
+This example shows how to add a range of items to an UpperBoundLimited type of ```System.Collections.Generic.List<T>```  
 ```csharp
     var list = new UpperBoundLimitedList<int>() { 1, 2, 3, 4 };
     var range = new int[] { 5, 6 };
@@ -45,8 +55,8 @@ This example shows how to add a range of items to an UpperBoundLimited type of l
 ```
 Results in a list of the following integers, due to the first 3 items in the list being removed in order to allow for the addition to take place while maintaining the list size at 3.  
 `{ 4, 5, 6 }`
-### Example 3:
-This example shows how to insert an item to an UpperBoundLimited type of limitation, of ```System.Collections.Generic.List<T>``` at index 1  
+### Example 4:
+This example shows how to insert an item to an UpperBoundLimited type of ```System.Collections.Generic.List<T>``` at index 1  
 ```csharp
     var list = new UpperBoundLimitedList<string>() { "A", "B", "C", "D" };
 
