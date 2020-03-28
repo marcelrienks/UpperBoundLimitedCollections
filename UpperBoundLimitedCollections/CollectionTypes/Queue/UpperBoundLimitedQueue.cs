@@ -2,13 +2,25 @@
 using UpperBoundLimitedCollections.Handlers;
 using UpperBoundLimitedCollections.Helpers;
 
-namespace UpperBoundLimitedCollections.CollectionTypes.Dictionary
+namespace UpperBoundLimitedCollections.CollectionTypes.Queue
 {
     public class UpperBoundLimitedQueue<T> : Queue<T>
     {
+        public UpperBoundLimitedQueue()
+        {
+        }
+
+        public UpperBoundLimitedQueue(IEnumerable<T> collection) : base(collection)
+        {
+        }
+
+        public UpperBoundLimitedQueue(int capacity) : base(capacity)
+        {
+        }
+
         /// <summary>
         /// Enqueue an item to the <c>System.Collections.Generic.Queue<T></c>,
-        /// removing a range of items from the beginning of the dictionary in order to maintain the supplied upper bound limit.
+        /// removing a range of items from the beginning of the queue in order to maintain the supplied upper bound limit.
         /// </summary>
         /// <param name="item">The object to append to the <c>System.Collections.Generic.Queue<T></c>.</param>
         /// <param name="upperBoundLimit">The maximum upper bound limit that should be applied to the <c>System.Collections.Generic.Queue<T></c>. This value must be greater than 0.</param>

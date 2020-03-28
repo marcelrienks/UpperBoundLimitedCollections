@@ -14,8 +14,6 @@ Currently implemented:
 * `System.Collections.Generic.List<T>`
 * `System.Collections.Generic.Dictionary<TKey,TValue>`
 * `System.Collections.Generic.Queue<T>`
-
-*Still to be implemented:*
 * `System.Collections.Generic.Stack<T>`
 ## Collection functions applicable:
 The following collection functions either have  
@@ -31,6 +29,8 @@ or use the global UpperBoundLimit property assigned when passing a limit argumen
 * TryAdd()
 ### `System.Collections.Generic.Queue<T>`
 * Enqueue()
+### `System.Collections.Generic.Stack<T>`
+* Push()
 ## Usage:
 **_Note: All examples below use the ```System.Collections.Generic.List<T>``` type, however the logic remains the same across all implemented collection types listed above._**
 ### Example 1:

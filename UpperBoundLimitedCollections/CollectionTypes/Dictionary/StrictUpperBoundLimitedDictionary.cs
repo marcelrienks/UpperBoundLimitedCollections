@@ -14,7 +14,7 @@ namespace UpperBoundLimitedCollections.CollectionTypes.Dictionary
 
         /// <summary>
         /// Initializes a new instance of an 'StrictUpperBoundLimitedList' that extends the <c>System.Collections.Generic.Dictionary<TKey, TValue></c>,
-        /// where the maximum upper bound limit of the list is controlled by removing a range of items from the beginning of the list if required.
+        /// where the maximum upper bound limit of the list is controlled by removing a range of items from the beginning of the dictionary if required.
         /// </summary>
         /// <param name="upperBoundLimit">The maximum upper bound limit that should be applied to the list. This value must be greater than 0.</param>
         /// <exception cref="System.ArgumentOutOfRangeException">The argument upperBoundLimit must be greater than 0. (Parameter 'upperBoundLimit')</exception>

@@ -27,8 +27,7 @@ namespace UpperBoundLimitedCollections.Handlers
         /// Checks the supplied 'upperBoundLimit', and reduces the size of the 'queue' collection by removing a range of items from the beginning in order to maintain the supplied upper bound limit.
         /// </summary>
         /// <typeparam name="T">The type that is stored in this queue</typeparam>
-        /// <param name="list">The List collection to reduce the size of to maintain the upper bound limit.</param>
-        /// <param name="rangeCount">The size of the new collection to be added</param>
+        /// <param name="queue">The Queue collection to reduce the size of to maintain the upper bound limit.</param>
         /// <param name="upperBoundLimit">The maximum upper bound limit that should be applied to the queue. This value must be greater than 0.</param>
         /// <exception cref="System.ArgumentNullException">The argument cannot be null. (Parameter 'queue')</exception>
         public static void ReduceSize<T>(Queue<T> queue, int upperBoundLimit)
@@ -41,6 +40,26 @@ namespace UpperBoundLimitedCollections.Handlers
             for (int i = 0; i < removeItemCount; i++)
             {
                 queue.Dequeue(); 
+            }
+        }
+
+        /// <summary>
+        /// Checks the supplied 'upperBoundLimit', and reduces the size of the 'stack' collection by removing a range of items from the top in order to maintain the supplied upper bound limit.
+        /// </summary>
+        /// <typeparam name="T">The type that is stored in this stack</typeparam>
+        /// <param name="stack">The Stack collection to reduce the size of to maintain the upper bound limit.</param>
+        /// <param name="upperBoundLimit">The maximum upper bound limit that should be applied to the stack. This value must be greater than 0.</param>
+        /// <exception cref="System.ArgumentNullException">The argument cannot be null. (Parameter 'stack')</exception>
+        public static void ReduceSize<T>(Stack<T> stack, int upperBoundLimit)
+        {
+            if (stack == null)
+                throw new ArgumentNullException(nameof(stack), "The argument cannot be null.");
+
+            // Calculate and remove the required range in order to maintain the upperBoundLimit
+            var removeItemCount = Calculators.CalculateRangeToBeRemoved(stack.Count, 1, upperBoundLimit);
+            for (int i = 0; i < removeItemCount; i++)
+            {
+                stack.Pop();
             }
         }
 
