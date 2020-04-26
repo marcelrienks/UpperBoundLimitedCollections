@@ -3,6 +3,9 @@
 Set of ```System.Collections.Generic``` types that enforce an upper bound limit when trying to add or insert new items or ranges of items.
 
 Or in other words a collection where you can specify a size limit that will be enforced when trying to add or insert item(s), by first removing a calculated number of elements from the beginning of the collection, to ensure that after the new item(s) have been added or inserted, the size limit of the collection remains intact.
+## Installation:
+This has been packaged into a Nuget Package and can be found at nuget.org
+https://www.nuget.org/packages/UpperBoundLimitedCollections
 ## Types of limitation:
 * **UpperBoundLimited**  
 A collection type that takes an 'upper bound limit' argument as an overload when calling the *Add(), Insert(), AddRange(), InsertRange()* functions. Therefore the upper bound limit is only enforced when calling one of the functions listed bove, which means that these collections can start off larger than the limit.
