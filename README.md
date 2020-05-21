@@ -1,4 +1,4 @@
-![Build & Test](https://github.com/marcelrienks/UpperBoundLimitedCollections/workflows/.NET%20Core/badge.svg?branch=master)
+![Build & Test](https://github.com/marcelrienks/UpperBoundLimitedCollections/workflows/Build%20&%20Test/badge.svg?branch=master)
 # UpperBoundLimitedCollections
 Set of ```System.Collections.Generic``` types that enforce an upper bound limit when trying to add or insert new items or ranges of items.
 
